@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        height: 100vh;
+        margin: 0 auto;
+        position: relative;
+        /* background: linear-gradient(
+          to right,
+          #25aae1,
+          #4481eb,
+          #04befe,
+          #3f86ed
+        ); */
+        background: transparent url("./assets/img/Mask_Group_42.png") 0% 0% padding-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      /* .container img {
+        /* position: absolute;
+        top: 4%; */
+      
+
+      .container h1 {
+        /* display: flex; */
+        /* border-radius: 2rem; */
+        /* flex-direction: column;*/
+        /* position: absolute;
+        top: 20%;
+        text-align: left; */
+        font: normal normal bold 32px/32px Comfortaa;
+        letter-spacing: 0px;
+        color: #ffffff;
+        opacity: 1;
+        margin: 0 0 15px 0;
+      }
+      .container .form-1 {
+        padding: 2rem;
+        display: flex;
+        border-radius: 2rem;
+        flex-direction: column;
+        /* position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); */
+        background: #fff;
+        width: 40%;
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+      }
+
+      .form-1 h1 {
+        text-align: center;
+        margin-top: 0.7rem;
+        margin-bottom: 1.5rem;
+      }
+
+      input[type="number"],
+      input[type="password"] {
+        border: 1px solid #00000029;
+        border-radius: 4px;
+        opacity: 1;
+        /* outline: none;
+        border-bottom: 1px solid; */
+        background: none;
+        margin: 0.6rem 2rem;
+        font-size: 2rem;
+      }
+
+      label {
+        margin: 0 2rem;
+        text-align: left;
+        font: normal normal normal 14px/24px Comfortaa;
+        letter-spacing: 0px;
+        color: #332d2d;
+        opacity: 0.8;
+      }
+
+      span {
+        margin: 0 2rem;
+        /* color: blue; */
+        cursor: pointer;
+        color: var(--unnamed-color-032965);
+        text-align: right;
+        font: normal normal normal 14px/24px Comfortaa;
+        letter-spacing: 0px;
+        color: #032965;
+        opacity: 1;
+      }
+
+      button {
+        margin: 2rem;
+        margin-bottom: 1.5rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        border-radius: 0.5rem;
+        border: none;
+        font-size: 1.1rem;
+        font-weight: bolder;
+        color: #fff;
+        /* background: linear-gradient(
+          to right,
+          #25aae1,
+          #4481eb,
+          #04befe,
+          #3f86ed
+        ); */
+        background: #032965;
+      }
+
+      /* ........///Sign-Up///......... */
+
+      /* p {
+        text-align: center;
+        font-weight: bolder;
+      }
+
+      .icons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 3rem;
+        margin-top: 0.5rem;
+      } */
+
+      /* .icons a {
+        text-decoration: none;
+        font-size: 1rem;
+        margin: 0.2rem;
+      }
+      
+      .icons .fa-facebook-f {
+        border-radius: 50%;
+        background: #5d75ab;
+        color: #fff;
+        padding: 1rem;
+      }
+      
+      .icons .fa-twitter {
+        border-radius: 50%;
+        background: #1da1f2;
+        color: white;
+        padding: 1rem;
+      }
+      
+      .icons .fa-google {
+        border-radius: 50%;
+        background: #ee5645;
+        color: #fff;
+        padding: 1rem;
+      } */
+
+      /* ....///Media query///..... */
+
+      @media (max-width: 501px) {
+        html {
+          font-size: 15px;
+        }
+
+        .container .form-1 {
+          width: 300px;
+        }
+      }
+
+      @media (min-width: 501px) and (max-width: 768px) {
+        html {
+          font-size: 14px;
+        }
+
+        .container .form-1 {
+          width: 450px;
+        }
+      }
+
+      @media (min-width: 765px) and (max-width: 1200px) {
+        html {
+          font-size: 18px;
+        }
+
+        .container .form-1 {
+
+          width: 540px;
+          height: 550px;
+        }
+      }
+
+      @media (orientation: landscape) and (max-height: 500px) {
+        .container {
+          height: 100vmax;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- <object data="Group 7629.svg" width="300" height="300"></object> -->
+      <img src="./assets/img/Group_7629.svg" alt="svg img" />
+      <h1>Welcome to IdenTT Admin Panel</h1>
+      <form class="form-1" id="form-1">
+        <label for="phone">Admin phone number</label>
+        <input type="number" name="phone" id="phone" required style="font-size: 20px;" />
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required />
+        <span>Forgot Password?</span>
+        <button type="submit">Login</button>
+
+        <!-- .........///sign-up///.......... -->
+
+        <!-- <p>Or SignUp Using</p> -->
+        <!-- <div class="icons">
+            <a href="https://www.facebook.com/" target="blank"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="https://twitter.com/" target="blank"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="https://mail.google.com/" target="blank"
+              ><i class="fab fa-google"></i
+            ></a>
+          </div> -->
+      </form>
+    </div>
+  <script>
+    document.querySelector('form.form-1').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let x = document.querySelector('form.form-1').elements;
+    console.log("Username: ", x['phone'].value);
+    console.log("Password: ", x['password'].value);
+    
+    /// submitting
+
+   /// redirecting
+   alert(`Logging in ${x['phone'].value} to homepage`);
+   document.location = './dashboard.html';
+  });
+
+  </script>
+  </body>
+</html>
