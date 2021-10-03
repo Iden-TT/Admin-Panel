@@ -3,8 +3,8 @@
 Material Dashboard - v2.1.2
 =========================================================
 
-
-Copyright 2020 Iden TT 
+Product Page: https://www.creative-tim.com/product/material-dashboard
+Copyright 2020 Iden TT (https://www.creative-tim.com)
 Coded by Iden TT
 
 =========================================================
@@ -14,18 +14,20 @@ The above copyright notice and this permission notice shall be included in all c
 
 <head>
   <meta charset="utf-8" />
-  
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard by Iden TT
+    Iden TT
   </title>
-
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="./assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <!-- <link href="./assets/demo/demo.css" rel="stylesheet" /> -->
+  <link href="./assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -41,13 +43,13 @@ The above copyright notice and this permission notice shall be included in all c
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active ">
+          <li class="nav-item ">
             <a class="nav-link" href="./dashboard.html">
               <i class="material-icons">person</i>
               <p>Generate QR</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item  active">
             <a class="nav-link" href="./pending.html">
               <i class="material-icons">content_paste</i>
               <p>Pending</p>
@@ -67,91 +69,142 @@ The above copyright notice and this permission notice shall be included in all c
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" id="generate">Generate QR</a>
+            <a class="navbar-brand" href="javascript:;">Pending Requests</a>
           </div>
       </nav>
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-2" id="spacing">
-            </div>
-            <div class="col-md-8" id="generate-qr">
+            <div class="col-md-5">
+                <h4 style="color: #332D2D; font-weight: 300;">User Personal Information</h4>
               <div class="card">
-                <!-- <div class="card-header card-header-primary">
-                  <h4 class="card-title">Generate QR</h4>
-                </div> -->
                 <div class="card-body">
-                  <form class="form-2" id="form-2">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating" for="username">User Name</label>
-                          <input type="text" class="form-control" name="username"  required>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating" for="phoneno">Phone Number</label>
-                          <input type="number" class="form-control" name="phoneno" required>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <label class="bmd-label-floating" for="select">Select Option</label>
-                        <select class="select-btn" name="selecttype" style="width: 100%;
-                        height: 39px;
-                        padding-left: 20px;
-                        border: 0px;
-                        border-bottom: 1px solid #e0e0e0;
-                        color:#1f2124c5;" required >
-                          <option selected ></option>
-                          <option value="bank_form">Bank Form</option>
-                          <option value="aadhar_card">Aadhar Card</option>
-                          <option value="pan_card">Pan Card</option>
-                        </select>
-                      </div>
-                    </div>
-                    <br>
-                    <button type="submit" style="width: 100%;" class="btn btn-primary pull-right" id="generate-press">Generate QR</button>
-                    <div style="text-align: center;font: normal normal normal 15px/22px Comfortaa;color: #48BF84;display: none;" id="generate-pressed">
-                      <p>QR Code generated <span><img src="./assets/img/round.png" style="max-height: 18px;"></span></p>
-                      <button style="width: 100%;" class="btn btn-primary pull-right" id="generate-another">Generate Another QR</button>
-                    </div>
-                    <div class="clearfix"></div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4" id="generated-qr" style="text-align: center;visibility: hidden;">
-              <!-- style="visibility: hidden;" -->
-              <div class="card">
-                <!-- <div class="card-header card-header-primary">
-                  <h4 class="card-title">Generate QR</h4>
-                </div> -->
-                <div class="card-body" >
-                  <canvas id="qr-code"></canvas>
-                  <br>
-                  
-                </div>
-                <h3 style="color: #FC5D73;">Scan this QR</h3>
-                <div class="card-body" style="background: #FFFAE2 0% 0% no-repeat padding-box;">
-                  <p>Note : This QR is valid for only 5 min</p>
-                  <h3><span id="time">05:00</span></h3>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td style="color: #332D2D; opacity: 0.7;">
+                            User Name
+                          </td>
+                          <td>
+                            Anu Gupta
+                          </td>
+                        </tr>
+                        <tr>
+                            <td style="color: #332D2D; opacity: 0.7;">
+                              Father Name
+                            </td>
+                            <td>
+                                Rahul Gupta
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="color: #332D2D; opacity: 0.7;">
+                              Mother Name
+                            </td>
+                            <td>
+                              Rani Gupta
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="color: #332D2D; opacity: 0.7;">
+                              Mobile Number
+                            </td>
+                            <td>
+                              +91 0022334455
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="color: #332D2D; opacity: 0.7;">
+                                Gender
+                            </td>
+                            <td>
+                                23/08/2001
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="color: #332D2D; opacity: 0.7;">
+                                Marital Status
+                            </td>
+                            <td>
+                                Others
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="color: #332D2D; opacity: 0.7;">
+                                Email
+                            </td>
+                            <td>
+                                anugupta@gmail.com
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="color: #332D2D; opacity: 0.7;">
+                                Residential Status
+                            </td>
+                            <td>
+                                Permanent
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="color: #332D2D; opacity: 0.7;">
+                                Occupation
+                            </td>
+                            <td>
+                                Student
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="color: #332D2D; opacity: 0.7;">
+                                Country Code
+                            </td>
+                            <td>
+                                +91
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="color: #332D2D; opacity: 0.7;">
+                                Place of birth
+                            </td>
+                            <td>
+                                Ambala
+                            </td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
 
-          </div>
-        </div>
+            <div class="col-md-7">
+                <h4 style="color: #332D2D; font-weight: 300;">Documents</h4>
+              <div class="card">
+                <div class="card-body">
+                  <h5 style="color: #332D2D; opacity: 0.7; font-size: 15px;">Aadhar Card</h5>
+                  <br>
+                  <img src="./assets/img/aadhar.png">
+                  
+                  <br>
+                  <br>
+
+                  <h5 style="color: #332D2D; opacity: 0.7; font-size: 15px;">Pan Card</h5>
+                  <br>
+                  <img src="./assets/img/pan.png">
+                  <br>
+                </div>
+              </div>
+            </div>
+
+      </div>
+
+      <div class="row">
+        <button  style="width: 100%;" class="btn btn-primary pull-right"  onclick="confirnacc()">Confirm Account Open</button>
       </div>
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
@@ -196,81 +249,10 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="../assets/demo/demo.js"></script>
   <script>
 
-////for generating qr
-
-    document.querySelector('form.form-2').addEventListener('submit', function(e) {
-        e.preventDefault();
-        let x = document.querySelector('form.form-2').elements;
-        console.log("Username: ", x['username'].value);
-        console.log("Phone No.: ", x['phoneno'].value);
-        console.log("Selected Type: ", x['selecttype'].value);
-
-        /// submitting
-
-      /// redirecting
-      // alert(`Logging in ${x['username'].value} to homepage`);
-      document.getElementById("spacing").classList.remove('col-md-2');
-      document.getElementById("generate-qr").classList.add('col-md-4');
-
-      generateQRCode(x);
-      });
-      document.getElementById("generate-another").addEventListener('click', function (params) {
-        location.reload();
-        
-      })
-      //generateqr
-
-      var qr;
-			(function() {
-                    qr = new QRious({
-                    element: document.getElementById('qr-code'),
-                    size: 200,
-                    value: 'NA'
-                });
-            })();
-            
-            function generateQRCode(x) {
-                var qrText = {
-                  name: `${x['username'].value}`,
-                  phone: `${x['phoneno'].value}`,
-                  type: `${x['selecttype'].value}`
-                }
-                // var qrtext = `${x['username'].value}, ${x['phoneno'].value}, ${x['selecttype'].value}`;
-                // alert(`Displaying qr for ${qrText}`);
-                const myJSON = JSON.stringify(qrText);
-                qr.set({
-                    foreground: 'black',
-                    size: 200,
-                    value: myJSON
-                });
-                document.getElementById("generated-qr").style.visibility = "visible";
-                document.getElementById("generate-press").style.display = "none";
-                document.getElementById("generate-pressed").style.display = "";
-                startTimer();
+      function confirnacc(){
+        alert("Successful !!!")
+        document.location = './pending.html';
       }
-
-      //timer
-
-      function startTimer() {
-      
-      var duration = 60*5, display = document.querySelector('#time');
-      var timer = duration, minutes, seconds;
-      setInterval(function () {
-          minutes = parseInt(timer / 60, 10)
-          seconds = parseInt(timer % 60, 10);
-
-          minutes = minutes < 10 ? "0" + minutes : minutes;
-          seconds = seconds < 10 ? "0" + seconds : seconds;
-
-          display.textContent = minutes + ":" + seconds;
-
-          if (--timer < 0) {
-              timer = duration;
-              //reseting, page refresh
-              location.reload();
-          }
-      }, 1000);
-  }
 
     $(document).ready(function() {
       $().ready(function() {
@@ -442,6 +424,8 @@ The above copyright notice and this permission notice shall be included in all c
       });
     });
   </script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script src="./assets/js/fbconfig.js"></script>
 </body>
 
 </html>

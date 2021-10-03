@@ -117,7 +117,7 @@ The above copyright notice and this permission notice shall be included in all c
                             Bank Form
                           </td>
                           <td class="text-primary">
-                            <a>View</a>
+                            <a onclick="viewreq()" style="cursor: pointer;">View</a>
                           </td>
                         </tr>
                         <tr>
@@ -134,7 +134,7 @@ The above copyright notice and this permission notice shall be included in all c
                             Aadhar Card
                           </td>
                           <td class="text-primary">
-                            <a>View</a>
+                            <a onclick="viewreq()" style="cursor: pointer;">View</a>
                           </td>
                         </tr>
                         <tr>
@@ -151,7 +151,7 @@ The above copyright notice and this permission notice shall be included in all c
                             PanCard
                           </td>
                           <td class="text-primary">
-                            <a>View</a>
+                            <a onclick="viewreq()" style="cursor: pointer;">View</a>
                           </td>
                         </tr>
                         <tr>
@@ -168,7 +168,7 @@ The above copyright notice and this permission notice shall be included in all c
                             Aadhar Card
                           </td>
                           <td class="text-primary">
-                            <a>View</a>
+                            <a onclick="viewreq()" style="cursor: pointer;">View</a>
                           </td>
                         </tr>
                       </tbody>
@@ -225,6 +225,11 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
   <script>
+
+    function viewreq(){
+      document.location = './request.html';
+    }
+
     $(document).ready(function() {
       $().ready(function() {
         $sidebar = $('.sidebar');
@@ -395,6 +400,8 @@ The above copyright notice and this permission notice shall be included in all c
       });
     });
   </script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script src="./assets/js/fbconfig.js"></script>
 </body>
 
 </html>
