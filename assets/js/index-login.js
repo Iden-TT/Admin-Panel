@@ -33,8 +33,8 @@ function login(e) {
     .auth()
     .signInWithEmailAndPassword(userEmail, userPass)
     .then(function (user) {
-      console.log(user);
-      window.alert(`login success of user with: ${user.email}`);
+      console.log(user.user);
+      window.alert(`login success of user with: ${user.user.email}`);
       document.location = "./dashboard.html";
     })
     .catch(function (error) {
