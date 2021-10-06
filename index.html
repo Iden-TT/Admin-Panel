@@ -172,7 +172,7 @@
         <label for="password">Password</label>
         <input type="password" name="password" id="password" required placeholder="Password: 123456789"/>
         <div id="loginbtn" style="display: contents">
-          <span>Forgot Password?</span>
+          <span onclick="ForgotPwd()">Forgot Password?</span>
           <button type="submit" onclick="login()">Login</button>
           <!-- <span onclick="wantToSignup()">Dont have an Account?</span> -->
         </div>
@@ -187,5 +187,10 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
     <script src="./assets/js/fbconfig.js"></script>
     <script src="./assets/js/index-login.js"></script>
+    <script>
+      function ForgotPwd(){
+        alert("Contact Administation");
+      }
+    </script>
   </body>
 </html>
