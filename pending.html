@@ -453,7 +453,11 @@ The above copyright notice and this permission notice shall be included in all c
     
         // Build the new table
         for (var i=1; i <= myArray.length; i++) {
+          id = myArray[i-1].id;
             newRow = document.createElement("tr");
+            newRow.style.cursor = "pointer";
+            newRow.setAttribute('onclick', `viewreq("${id}")`);
+            newRow.style.cursor = "pointer";
             tableBody.appendChild(newRow);
             sno = document.createElement("td");
             names = document.createElement("td");
@@ -469,14 +473,17 @@ The above copyright notice and this permission notice shall be included in all c
             type.textContent = myArray[i-1].Requested;
             type.classlist = "type";
             ata = document.createElement("a");
-            if(myArray[i-1].Pending){
+            if(myArray[i-1].Pending === "True"){
 
               ata.textContent= "Verification Pending";
+              ata.style.color = "#FC5D73";
+            }else{
+              ata.textContent= "Verified";
+              ata.style.color = "green";
             }
             ata.style.cursor = "pointer";
-            ata.style.color = "orange";
+            ata.style.fontWeight = "400";
             // ata.style.fontWeight = "600";
-            id = myArray[i-1].id;
             console.log(id);
             ata.setAttribute('onclick', `viewreq("${id}")`);
     
