@@ -131,17 +131,26 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="form-group">
+                        <!-- style="display: none;" -->
+                        <div class="form-group" id="typeform-document">
+                          <label class="bmd-label-floating" for="select">Select Option</label>
+                          <input type="text" class="select-btn form-control"  name="selecttype"  list="typeform" >
+                          <datalist >
+                            <option value="Bank Form" id="bankform">
+                            <option value="Aadhar Card">
+                            <option value="Pan Card">
+                          </datalist>                         
+                        </div>
+
+                        <!-- <div class="form-group" id="typeform-bankform" style="display: none;">
 
                           <label class="bmd-label-floating" for="select">Select Option</label>
                           <input type="text" class="select-btn form-control"  name="selecttype"  list="typeform" >
-                          <datalist id="typeform">
-                            <!-- <option value="Bank Form" id="bankform"> -->
-                            <option value="Aadhar Card">
-                            <option value="Pan Card">
-                          </datalist>
-                          
-                        </div>
+                          <datalist>
+                            <option value="Bank Form" id="bankform">
+                          </datalist>                      
+                        </div> -->
+
                       </div>
                     </div>
                     <br>
@@ -477,16 +486,14 @@ The above copyright notice and this permission notice shall be included in all c
         if (params) {
           document.getElementById("logo-type").src = "./assets/icons/Bank.png";
           document.getElementById("logo-type-text").innerHTML = "Bank";
-          bankform = document.createElement("option");
-          bankform.setAttribute("value","Bank Form");
-
-          document.getElementById("typeform").appendChild(bankform);
+          // document.getElementById("typeform-bankform").style.display = "block";
           
         }else{
   
           document.getElementById("logo-type").src = "./assets/icons/Document.png";
           document.getElementById("logo-type-text").innerHTML = "Document";
-          document.getElementById("bankform").style.visibility = "invisible";
+          // document.getElementById("typeform-document").style.display = "block";
+
         }
       }
   </script>

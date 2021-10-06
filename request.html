@@ -153,7 +153,7 @@ The above copyright notice and this permission notice shall be included in all c
                           </tr>
                           <tr>
                             <td style="color: #332D2D; opacity: 0.7;">
-                                Marital Status
+                                Maritial Status
                             </td>
                             <td>
                                 
@@ -207,12 +207,12 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="col-md-7">
                 <h4 style="color: #332D2D; font-weight: 300;">Documents</h4>
               <div class="card">
-                <div class="card-body" >
+                <div class="card-body" id="cards">
                   <div id="aadhar-card">
 
                     <h5 style="color: #332D2D; opacity: 0.7; font-size: 15px;">Aadhar Card</h5>
                     <br>
-                    <img src="./assets/img/aadhar.png">
+                    <img id="aadharImg" src="./assets/img/aadhar.png" style="max-height: 400px;">
                     
                     <br>
                   </div>
@@ -221,7 +221,7 @@ The above copyright notice and this permission notice shall be included in all c
 
                     <h5 style="color: #332D2D; opacity: 0.7; font-size: 15px;">Pan Card</h5>
                     <br>
-                    <img src="./assets/img/pan.png">
+                    <img id="panImg" src="./assets/img/pan.png" style="max-height: 450px;">
                     <br>
                   </div>
                 </div>
@@ -230,8 +230,8 @@ The above copyright notice and this permission notice shall be included in all c
 
       </div>
 
-      <div class="row">
-        <button  style="width: 100%;" class="btn btn-primary pull-right"  onclick="confirnacc()" id="confirm-btn">Confirm Account Open</button>
+      <div class="row" >
+        <button  style="width: 100%; display: none;" class="btn btn-primary pull-right"  onclick="confirnacc()" id="confirm-btn">Confirm Account Open</button>
       </div>
       <div class="row">
         <a href="./pending.html" style="color: white; width: 100%;"><button  style="width: 100%; border: 0px;color: #032965;" >
@@ -462,6 +462,13 @@ The above copyright notice and this permission notice shall be included in all c
     function updateTableHTML(myArray) {
       // console.log("hi it's working");
       // maps the list onto the existing table
+
+      if(myArray['Aadhar Card'] && myArray['Pan Card']){
+        document.getElementById('aadharImg').src =myArray['Aadhar Card'] ;
+        document.getElementById('panImg').src =myArray['Pan Card'] ;
+        document.getElementById('cards').style.display = 'flex';
+      }
+
       var tableBody = document.getElementById("your-tale-id"),
             newRow, newCell;
     
@@ -474,8 +481,8 @@ The above copyright notice and this permission notice shall be included in all c
             ele.children[1].innerText = myArray[`${ele.children[0].innerText}`];
           }
         // }
-        if (myArray['Pending'] == "False") {
-          document.getElementById('confirm-btn').style.display = "none";
+        if (myArray['Pending'] == "True") {
+          document.getElementById('confirm-btn').style.display = "block";
         }
     }
     
@@ -490,6 +497,7 @@ The above copyright notice and this permission notice shall be included in all c
           document.getElementById('personal-data').style.display = "none";  
           document.getElementById("logo-type").src = "./assets/icons/Document.png";
           document.getElementById("logo-type-text").innerHTML = "Document";
+          document.getElementById("confirm-btn").innerText = 'Confirm Identity';
         }
       }
     
