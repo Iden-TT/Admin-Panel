@@ -34,7 +34,7 @@ function login(e) {
     .signInWithEmailAndPassword(userEmail, userPass)
     .then(function (user) {
       console.log(user.user);
-      window.alert(`login success of user with: ${user.user.email}`);
+      window.alert(`Welcome Admin !!`);
       document.location = "./dashboard.html";
     })
     .catch(function (error) {

@@ -53,39 +53,25 @@ function readData() {
   starCountRef.on("value", (snapshot) => {
     const data = snapshot.val();
     const querySnapshot = Object.values(data);
+    const userID = Object.keys(data);
+    var i = 0;
+    console.log(userID, "user id here look");
     querySnapshot.forEach((doc) => {
+      
       let items = doc;
-      items.id = doc["User ID"];
+      items.id = userID[i];
+      i++;
       tableData.push(items);
       console.log(doc, "doc logeged");
       items = JSON.stringify(items);
       // console.log(`${doc.id} => ${items}`);
     });
-    console.log(tableData);
+    // console.log(tableData,"helloo");
     updateTableHTML(tableData);
-    console.log(data, "data called");
+    // console.log(data, "data called");
     // updateStarCount(postElement, data);
   });
 
-  // db.collection("data")
-  //   .get()
-  //   .then((querySnapshot) => {
-  //     console.log(querySnapshot.docs);
-  // querySnapshot.forEach((doc) => {
-  //   let items = doc.data();
-  //   items.id = doc.id;
-  //   tableData.push(items);
-  //   // console.log(doc.data());
-  //   items = JSON.stringify(items);
-  //   // console.log(`${doc.id} => ${items}`);
-  // });
-  // console.log(tableData);
-  // updateTableHTML(tableData);
-  // });
-
-  // updateTableHTML(update);
-  // console.log(update);
-  // console.log(updateTableHTML);
 }
 
 function gameChange(params) {
