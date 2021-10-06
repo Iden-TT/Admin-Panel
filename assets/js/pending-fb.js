@@ -3,23 +3,25 @@ var db = firebase.database();
 console.log(db);
 
 realTimeDataStaut = {
-  Name: "Mahishi Mahesh",
+  Name: "Sahu Shinghaniya",
   DOB: "14-07-2001",
   "Country code": "+91",
   "Country Code of Birth": "+91",
-  Email: "MontyJon@gmail.com",
-  "Father Name": "Sanju Samsung",
+  Email: "PakaaluLK@gmail.com",
+  "Father Name": "DK Popa",
   Gender: "Male",
   "Maritial Status": "Unmarried",
-  "Mother Name": "Gupta Kumrai",
+  "Mother Name": "Nikita Popa",
   Occupation: "student",
   Pending: "True",
   Phone: 9862564098,
-  "Place of Birth": "Gantok",
-  "Residential Address": "japan street no5",
+  "Place of Birth": "Jhumritaliya",
+  "Residential Address": "Satangali, Pakistan",
   "Tax Iden Number": 09583202523,
-  "User ID": "jga49u095-q95-qjf08q4",
-  Requested: "Bank Form"
+  "User ID": "ngctyfvjhf67tf564ruyv67",
+  "Aadhar Card":
+    "https://firebasestorage.googleapis.com/v0/b/identt-9b64f.appspot.com/o/8208208208_aadhar.jpg?alt=media&token=1e628abe-4816-4edc-9ff5-cee36ace8379",
+  Requested: "Bank Form",
 };
 
 function addDataFb(data) {
@@ -53,9 +55,9 @@ function readData() {
     const querySnapshot = Object.values(data);
     querySnapshot.forEach((doc) => {
       let items = doc;
-      items.id = doc['User ID'];
+      items.id = doc["User ID"];
       tableData.push(items);
-      console.log(doc,"doc logeged");
+      console.log(doc, "doc logeged");
       items = JSON.stringify(items);
       // console.log(`${doc.id} => ${items}`);
     });

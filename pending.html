@@ -27,6 +27,17 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="./assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="./assets/js/fbconfig.js"></script>
+    <script>
+      firebase.auth().onAuthStateChanged(function(user) {
+  if (!user) {
+    window.location.href = `./index.html`;
+  } 
+});
+    </script>
 </head>
 
 <body class="">
@@ -85,7 +96,7 @@ The above copyright notice and this permission notice shall be included in all c
             <a class="navbar-brand" href="javascript:;">Pending Requests</a>
           </div>
           <div class="navbar-wrapper">
-            <button  class="btn btn-primary"><img src="./assets/icons/logout.png"></button> 
+            <button  class="btn btn-primary" onclick="Signout()"><img src="./assets/icons/logout.png"></button> 
           </div>
       </nav>
       <!-- End Navbar -->
@@ -421,38 +432,7 @@ The above copyright notice and this permission notice shall be included in all c
     });
     </script>
     <script>
-    update =[ 
-      {
-      name: "saurav",
-      phone: 2039509235,
-      type: "bank form",
-      action: "view"
-    },
-      {
-      name: "saurav",
-      phone: 2039509235,
-      type: "bank form",
-      action: "view"
-    },
-      {
-      name: "saurav",
-      phone: 2039509235,
-      type: "bank form",
-      action: "view"
-    },
-      {
-      name: "saurav sone",
-      phone: 2009235,
-      type: "bank form",
-      action: "view"
-    },
-      {
-      name: "saurav monkey",
-      phone: 2039509235,
-      type: "bank form",
-      action: "view"
-    },
-    ]
+   
     
     
     function updateTableHTML(myArray) {
@@ -462,9 +442,16 @@ The above copyright notice and this permission notice shall be included in all c
     
         // Reset the table
         tableBody.innerHTML = "";
-    
+      var Sno = 1;
         // Build the new table
         for (var i=1; i <= myArray.length; i++) {
+          console.log(document.getElementById("logo-type-text").innerText === 'DOCUMENT' , myArray[i-1].Requested !== 'Bank Form', "why why!");
+          if(document.getElementById("logo-type-text").innerText === 'BANK' && myArray[i-1].Requested !== 'Bank Form'){
+            continue;
+          }
+          if(document.getElementById("logo-type-text").innerText === 'DOCUMENT' && myArray[i-1].Requested === 'Bank Form'){
+            continue;
+          }
           id = myArray[i-1].id;
             newRow = document.createElement("tr");
             newRow.style.cursor = "pointer";
@@ -477,7 +464,8 @@ The above copyright notice and this permission notice shall be included in all c
             type = document.createElement("td");
             action = document.createElement("td");
     
-            sno.textContent = i;
+            sno.textContent = Sno;
+            Sno++;
             names.textContent = myArray[i-1].Name;
             names.classlist = "name";
             phone.textContent = myArray[i-1].Phone;
@@ -519,7 +507,7 @@ The above copyright notice and this permission notice shall be included in all c
         }else{
   
           document.getElementById("logo-type").src = "./assets/icons/Document.png";
-          document.getElementById("logo-type-text").innerHTML = "Identity";
+          document.getElementById("logo-type-text").innerHTML = "Document";
         }
       }
     </script>
@@ -527,6 +515,20 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="./assets/js/fbconfig.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script>
+    function Signout(params) {
+  firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      window.location.href = `./index.html`;
+    })
+    .catch((error) => {
+      alert(error);
+    });
+}
+
+  </script>
   <script src="./assets/js/pending-fb.js"></script>
   <script>readData();</script>
 </body>

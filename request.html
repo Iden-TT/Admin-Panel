@@ -27,6 +27,17 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="./assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="./assets/js/fbconfig.js"></script>
+    <script>
+      firebase.auth().onAuthStateChanged(function(user) {
+  if (!user) {
+    window.location.href = `./index.html`;
+  } 
+});
+    </script>
 </head>
 
 <body class="">
@@ -85,14 +96,14 @@ The above copyright notice and this permission notice shall be included in all c
             <a class="navbar-brand" href="javascript:;" onclick="location('/pending.html')">Pending Requests</a>
           </div>
           <div class="navbar-wrapper">
-            <button  class="btn btn-primary"><img src="./assets/icons/logout.png"></button> 
+            <button  class="btn btn-primary" onclick="Signout()"><img src="./assets/icons/logout.png"></button> 
           </div>
       </nav>
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-5" id="personal-data">
                 <h4 style="color: #332D2D; font-weight: 300;">User Personal Information</h4>
               <div class="card">
                 <div class="card-body">
@@ -104,7 +115,7 @@ The above copyright notice and this permission notice shall be included in all c
                             Name
                           </td>
                           <td>
-                            Anu Gupta
+                            
                           </td>
                         </tr>
                         <tr>
@@ -112,7 +123,7 @@ The above copyright notice and this permission notice shall be included in all c
                               Father Name
                             </td>
                             <td>
-                                Rahul Gupta
+                                
                             </td>
                           </tr>
                           <tr>
@@ -120,7 +131,7 @@ The above copyright notice and this permission notice shall be included in all c
                               Mother Name
                             </td>
                             <td>
-                              Rani Gupta
+                              
                             </td>
                           </tr>
                           <tr>
@@ -128,7 +139,7 @@ The above copyright notice and this permission notice shall be included in all c
                               Phone
                             </td>
                             <td>
-                              +91 0022334455
+                              
                             </td>
                           </tr>
                           <tr>
@@ -136,7 +147,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 Gender
                             </td>
                             <td>
-                                23/08/2001
+                                
                             </td>
                           </tr>
                           <tr>
@@ -144,7 +155,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 Marital Status
                             </td>
                             <td>
-                                Others
+                                
                             </td>
                           </tr>
                           <tr>
@@ -152,7 +163,6 @@ The above copyright notice and this permission notice shall be included in all c
                                 Email
                             </td>
                             <td>
-                                anugupta@gmail.com
                             </td>
                           </tr>
                           <tr>
@@ -160,7 +170,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 Residential Address
                             </td>
                             <td>
-                                Permanent
+                                
                             </td>
                           </tr>
                           <tr>
@@ -168,7 +178,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 Occupation
                             </td>
                             <td>
-                                Student
+                                
                             </td>
                           </tr>
                           <tr>
@@ -176,7 +186,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 Country code
                             </td>
                             <td>
-                                +91
+                                
                             </td>
                           </tr>
                           <tr>
@@ -184,7 +194,6 @@ The above copyright notice and this permission notice shall be included in all c
                                 Place of Birth
                             </td>
                             <td>
-                                Ambala
                             </td>
                           </tr>
                       </tbody>
@@ -197,18 +206,23 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="col-md-7">
                 <h4 style="color: #332D2D; font-weight: 300;">Documents</h4>
               <div class="card">
-                <div class="card-body">
-                  <h5 style="color: #332D2D; opacity: 0.7; font-size: 15px;">Aadhar Card</h5>
-                  <br>
-                  <img src="./assets/img/aadhar.png">
-                  
-                  <br>
-                  <br>
+                <div class="card-body" >
+                  <div id="aadhar-card">
 
-                  <h5 style="color: #332D2D; opacity: 0.7; font-size: 15px;">Pan Card</h5>
+                    <h5 style="color: #332D2D; opacity: 0.7; font-size: 15px;">Aadhar Card</h5>
+                    <br>
+                    <img src="./assets/img/aadhar.png">
+                    
+                    <br>
+                  </div>
                   <br>
-                  <img src="./assets/img/pan.png">
-                  <br>
+                  <div id="pan-card">
+
+                    <h5 style="color: #332D2D; opacity: 0.7; font-size: 15px;">Pan Card</h5>
+                    <br>
+                    <img src="./assets/img/pan.png">
+                    <br>
+                  </div>
                 </div>
               </div>
             </div>
@@ -445,63 +459,23 @@ The above copyright notice and this permission notice shall be included in all c
   </script>
   <script>
     function updateTableHTML(myArray) {
-      console.log("hi it's working");
+      // console.log("hi it's working");
       // maps the list onto the existing table
       var tableBody = document.getElementById("your-tale-id"),
             newRow, newCell;
     
       var tdlist = document.querySelectorAll('tr');
-      console.log(tdlist);
-        // Reset the table
-        // tableBody.innerHTML = "";
-    
-        // Build the new table
-        // for (let i = 0; i < myArray.length; i++) {
-        //   const element = myArray[i];
-          // console.log(element, "element");
+      // console.log(tdlist);
+        
           for (let j = 0; j < tdlist.length; j++) {
             const ele = tdlist[j];
-            console.log(ele.children[1].innerText,ele.children[0].innerText,"look here what you want" );
+            // console.log(ele.children[1].innerText,ele.children[0].innerText,"look here what you want" );
             ele.children[1].innerText = myArray[`${ele.children[0].innerText}`];
           }
         // }
         if (myArray['Pending'] == "False") {
           document.getElementById('confirm-btn').setAttribute('disabled', 'true');
         }
-
-        // for (var i=1; i <= myArray.length; i++) {
-        //     newRow = document.createElement("tr");
-        //     tableBody.appendChild(newRow);
-        //     sno = document.createElement("td");
-        //     names = document.createElement("td");
-        //     phone = document.createElement("td");
-        //     type = document.createElement("td");
-        //     action = document.createElement("td");
-    
-        //     sno.textContent = i;
-        //     names.textContent = myArray[i-1].name;
-        //     names.classlist = "name";
-        //     phone.textContent = myArray[i-1].phone;
-        //     phone.classlist = "phone";
-        //     type.textContent = myArray[i-1].requested;
-        //     type.classlist = "type";
-        //     ata = document.createElement("a");
-        //     if(myArray[i-1].active){
-
-        //       ata.textContent= "Verification Pending";
-        //     }
-        //     ata.style.cursor = "pointer";
-        //     ata.style.color = "orange";
-        //     // ata.style.fontWeight = "600";
-        //     ata.setAttribute('onclick', 'viewreq()');
-    
-        //     newRow.appendChild(sno);
-        //     newRow.appendChild(names);
-        //     newRow.appendChild(phone);
-        //     newRow.appendChild(type);
-        //     newRow.appendChild(action);
-        //     action.appendChild(ata);
-        // }
     }
     
   </script>
@@ -513,15 +487,31 @@ The above copyright notice and this permission notice shall be included in all c
         }else{
   
           document.getElementById("logo-type").src = "./assets/icons/Document.png";
-          document.getElementById("logo-type-text").innerHTML = "Identity";
+          document.getElementById("logo-type-text").innerHTML = "Document";
         }
       }
+    
   </script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
   <script src="./assets/js/fbconfig.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script src="./assets/js/requested.js"></script>
+  <script>function Signout(params) {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        window.location.href = `./index.html`;
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
+  if (document.getElementById("logo-type-text").innerText !== "BANK") {
+    document.getElementById('personal-data').style.display = "none";
+  }
+  </script>
   
 </body>
 

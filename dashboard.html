@@ -1,5 +1,5 @@
 <!--
-=========================================================
+  =========================================================
 Material Dashboard - v2.1.2
 =========================================================
 
@@ -11,21 +11,32 @@ Coded by Iden TT
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-    Admin Panel
-  </title>
-
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <!-- CSS Files -->
-  <link href="./assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <!-- <link href="./assets/demo/demo.css" rel="stylesheet" /> -->
+  
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      Admin Panel
+    </title>
+    
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="./assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <!-- <link href="./assets/demo/demo.css" rel="stylesheet" /> -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="./assets/js/fbconfig.js"></script>
+    <script>
+      firebase.auth().onAuthStateChanged(function(user) {
+  if (!user) {
+    window.location.href = `./index.html`;
+  } 
+});
+    </script>
 </head>
 
 <body class="">
@@ -85,7 +96,7 @@ The above copyright notice and this permission notice shall be included in all c
             <a class="navbar-brand" id="generate">Generate QR</a>
           </div>
           <div class="navbar-wrapper">
-            <button  class="btn btn-primary"><img src="./assets/icons/logout.png"></button> 
+            <button  class="btn btn-primary" onclick="Signout()"><img src="./assets/icons/logout.png"></button> 
           </div>
       </nav>
       <!-- End Navbar -->
@@ -479,13 +490,10 @@ The above copyright notice and this permission notice shall be included in all c
         }else{
   
           document.getElementById("logo-type").src = "./assets/icons/Document.png";
-          document.getElementById("logo-type-text").innerHTML = "Identity";
+          document.getElementById("logo-type-text").innerHTML = "Document";
         }
       }
   </script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="./assets/js/fbconfig.js"></script>
   <script src="./assets/js/Dashboard.js"></script>
 </body>
 
