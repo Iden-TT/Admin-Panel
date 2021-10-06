@@ -1,120 +1,89 @@
-var db = firebase.firestore();
+// var db = firebase.firestore();
+var db = firebase.database();
+console.log(db);
+
+realTimeDataStaut = {
+  Name: "Mahishi Mahesh",
+  DOB: "14-07-2001",
+  "Country code": "+91",
+  "Country Code of Birth": "+91",
+  Email: "MontyJon@gmail.com",
+  "Father Name": "Sanju Samsung",
+  Gender: "Male",
+  "Maritial Status": "Unmarried",
+  "Mother Name": "Gupta Kumrai",
+  Occupation: "student",
+  Pending: "True",
+  Phone: 9862564098,
+  "Place of Birth": "Gantok",
+  "Residential Address": "japan street no5",
+  "Tax Iden Number": 09583202523,
+  "User ID": "jga49u095-q95-qjf08q4",
+  Requested: "Bank Form"
+};
 
 function addDataFb(data) {
-  //   db.collection("users")
-  //     .add({
-  //       first: "Ada",
-  //       last: "Lovelace",
-  //       born: 1815,
-  //     })
-  //     .then((docRef) => {
-  //       console.log("Document written with ID: ", docRef.id);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error adding document: ", error);
-  //     });
-  var docData = {
-    name: "Shivam yadav",
-    phone: 4894165484,
-    requested: "Bank Form",
-    time: firebase.firestore.Timestamp.now(),
-    active: "view",
-  };
-  db.collection("data")
-    .add(docData)
-    .then(() => {
-      console.log("Document successfully written!");
-    });
+  console.log("add data called");
+  console.log(data["User ID"]);
+  firebase
+    .database()
+    .ref("forms/" + data["User ID"])
+    .set(data);
+
+  // var docData = {
+  //   name: "Shivam yadav",
+  //   phone: 4894165484,
+  //   requested: "Bank Form",
+  //   time: firebase.firestore.Timestamp.now(),
+  //   active: "view",
+  // };
+  // db.collection("data")
+  //   .add(docData)
+  //   .then(() => {
+  //     console.log("Document successfully written!");
+  //   });
 }
 
 function readData() {
+  console.log("read data called");
   tableData = [];
-
-  db.collection("data")
-    .get()
-    .then((querySnapshot) => {
-      console.log(querySnapshot.docs);
-      querySnapshot.forEach((doc) => {
-        tableData.push(doc.data());
-        // console.log(doc.data());
-        let items = doc.data();
-        items = JSON.stringify(items);
-        // console.log(`${doc.id} => ${items}`);
-      });
-      console.log(tableData);
-      updateTableHTML(tableData);
+  var starCountRef = firebase.database().ref("forms/");
+  starCountRef.on("value", (snapshot) => {
+    const data = snapshot.val();
+    const querySnapshot = Object.values(data);
+    querySnapshot.forEach((doc) => {
+      let items = doc;
+      items.id = doc['User ID'];
+      tableData.push(items);
+      console.log(doc,"doc logeged");
+      items = JSON.stringify(items);
+      // console.log(`${doc.id} => ${items}`);
     });
-  // update = [
-  //   [1, "saurav sonu", "095564564665", "bank form", "view"],
-  //   [2, "saurav sonu", "095564564665", "bank form", "view"],
-  //   [3, "saurav sonu", "095564564665", "bank form", "view"],
-  //   [4, "saurav sonu", "095564564665", "bank form", "view"],
-  //   [5, "saurav sonu", "095564564665", "bank form", "view"],
-  // ];
+    console.log(tableData);
+    updateTableHTML(tableData);
+    console.log(data, "data called");
+    // updateStarCount(postElement, data);
+  });
 
-  // function updateTableHTML(myArray) {
-  //   // maps the list onto the existing table
-  //   var tableBody = document.getElementById("your-table-id"),
-  //     newRow,
-  //     newCell;
-
-  //   // Reset the table
-  //   tableBody.innerHTML = "";
-
-  //   // Build the new table
-  //   for (var i = 0; i < myArray.length; i++) {
-  //     newRow = document.createElement("tr");
-  //     tableBody.appendChild(newRow);
-
-  //     if (myArray[i] instanceof Array) {
-  //       for (var j = 0; j < myArray[i].length; j++) {
-  //         newCell = document.createElement("td");
-  //         newCell.textContent = update[i][j];
-  //         newRow.appendChild(newCell);
-  //       }
-  //     } else {
-  //       newCell = document.createElement("td");
-  //       newCell.textContent = myArray[i];
-  //       newRow.appendChild(newCell);
-  //     }
-  //   }
-  // }
-  update =[ 
-    {
-    name: "saurav",
-    phone: 2039509235,
-    type: "bank form",
-    action: "view"
-  },
-    {
-    name: "saurav",
-    phone: 2039509235,
-    type: "bank form",
-    action: "view"
-  },
-    {
-    name: "saurav",
-    phone: 2039509235,
-    type: "bank form",
-    action: "view"
-  },
-    {
-    name: "saurav sone",
-    phone: 2009235,
-    type: "bank form",
-    action: "view"
-  },
-    {
-    name: "saurav monkey",
-    phone: 2039509235,
-    type: "bank form",
-    action: "view"
-  },
-  ]
+  // db.collection("data")
+  //   .get()
+  //   .then((querySnapshot) => {
+  //     console.log(querySnapshot.docs);
+  // querySnapshot.forEach((doc) => {
+  //   let items = doc.data();
+  //   items.id = doc.id;
+  //   tableData.push(items);
+  //   // console.log(doc.data());
+  //   items = JSON.stringify(items);
+  //   // console.log(`${doc.id} => ${items}`);
+  // });
+  // console.log(tableData);
+  // updateTableHTML(tableData);
+  // });
 
   // updateTableHTML(update);
-  console.log(update);
-  console.log(updateTableHTML);
+  // console.log(update);
+  // console.log(updateTableHTML);
 }
 
 function gameChange(params) {
@@ -169,3 +138,33 @@ function gameChange2(params) {
 //     action.appendChild(ata);
 //   }
 // }
+function checkauth(params) {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+
+      //   document.getElementById("email").style.display = "block";
+      //   document.getElementById("login_div").style.display = "none";
+
+      var user = firebase.auth().currentUser;
+
+      if (user != null) {
+        var email_id = user.email;
+        console.log(email_id);
+        console.log(email_id === "admin@bank.com");
+        if (email_id === "admin@bank.com") {
+          knowyourAdmin(true);
+        } else {
+          knowyourAdmin(false);
+        }
+      }
+    } else {
+      // No user is signed in.
+      //   document.getElementById("email").style.display = "none";
+      //   document.getElementById("login_div").style.display = "block";
+    }
+  });
+}
+
+checkauth();
+// addDataFb(realTimeDataStaut);

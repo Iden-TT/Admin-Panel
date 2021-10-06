@@ -40,6 +40,10 @@ The above copyright notice and this permission notice shall be included in all c
     -->
       <div class="logo"><a href="#" class="simple-text logo-normal">
           Iden TT
+        </a>
+        <a href="./dashboard.html" class="simple-text logo-normal" id="logo-type" style=" font-family: fantasy;
+        background: gainsboro;" >
+          
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -103,7 +107,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </th>
                       </thead>
                       <tbody id="your-table-id">
-                        <tr>
+                        <!-- <tr>
                           <td>
                             1
                           </td>
@@ -170,7 +174,7 @@ The above copyright notice and this permission notice shall be included in all c
                           <td class="text-primary">
                             <a onclick="viewreq()" style="cursor: pointer;">View</a>
                           </td>
-                        </tr>
+                        </tr> -->
                       </tbody>
                     </table>
                   </div>
@@ -229,8 +233,9 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="./assets/demo/demo.js"></script>
   <script>
 
-    function viewreq(){
-      document.location = './request.html';
+    function viewreq(id){
+      console.log(id);
+      window.location.href = `./request.html?id=${id}`;
     }
 
     $(document).ready(function() {
@@ -457,16 +462,23 @@ The above copyright notice and this permission notice shall be included in all c
             action = document.createElement("td");
     
             sno.textContent = i;
-            names.textContent = myArray[i-1].name;
+            names.textContent = myArray[i-1].Name;
             names.classlist = "name";
-            phone.textContent = myArray[i-1].phone;
+            phone.textContent = myArray[i-1].Phone;
             phone.classlist = "phone";
-            type.textContent = myArray[i-1].requested;
+            type.textContent = myArray[i-1].Requested;
             type.classlist = "type";
             ata = document.createElement("a");
-            ata.textContent= myArray[i-1].active;
+            if(myArray[i-1].Pending){
+
+              ata.textContent= "Verification Pending";
+            }
             ata.style.cursor = "pointer";
-            ata.setAttribute('onclick', 'viewreq()');
+            ata.style.color = "orange";
+            // ata.style.fontWeight = "600";
+            id = myArray[i-1].id;
+            console.log(id);
+            ata.setAttribute('onclick', `viewreq("${id}")`);
     
             newRow.appendChild(sno);
             newRow.appendChild(names);
@@ -480,9 +492,20 @@ The above copyright notice and this permission notice shall be included in all c
     // updateTableHTML(update)
     // readData();
     </script>
+     <script>
+      function knowyourAdmin(params) {
+        if (params) {
+          document.getElementById("logo-type").innerHTML = "Bank";
+        }else{
+  
+          document.getElementById("logo-type").innerHTML = "Identity";
+        }
+      }
+    </script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
   <script src="./assets/js/fbconfig.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script src="./assets/js/pending-fb.js"></script>
   <script>readData();</script>
 </body>

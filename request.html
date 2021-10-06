@@ -40,6 +40,10 @@ The above copyright notice and this permission notice shall be included in all c
     -->
       <div class="logo"><a href="#" class="simple-text logo-normal">
           Iden TT
+        </a>
+        <a href="./dashboard.html" class="simple-text logo-normal" id="logo-type" style=" font-family: fantasy;
+        background: gainsboro;" >
+          
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -69,7 +73,7 @@ The above copyright notice and this permission notice shall be included in all c
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">Pending Requests</a>
+            <a class="navbar-brand" href="javascript:;" onclick="location('/pending.html')">Pending Requests</a>
           </div>
       </nav>
       <!-- End Navbar -->
@@ -82,7 +86,7 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table">
-                      <tbody>
+                      <tbody id="your-table-id">
                         <tr>
                           <td style="color: #332D2D; opacity: 0.7;">
                             User Name
@@ -201,6 +205,12 @@ The above copyright notice and this permission notice shall be included in all c
 
       <div class="row">
         <button  style="width: 100%;" class="btn btn-primary pull-right"  onclick="confirnacc()">Confirm Account Open</button>
+      </div>
+      <div class="row">
+        <a href="./pending.html" style="color: white; width: 100%;"><button  style="width: 100%;" class="btn btn-primary pull-right" style="background: #032965b8;"  >
+          Back
+        </button>
+        </a>
       </div>
     </div>
   </div>
@@ -424,9 +434,66 @@ The above copyright notice and this permission notice shall be included in all c
       });
     });
   </script>
-  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script>
+    function updateTableHTML(myArray) {
+      // maps the list onto the existing table
+      var tableBody = document.getElementById("your-table-id"),
+            newRow, newCell;
+    
+        // Reset the table
+        tableBody.innerHTML = "";
+    
+        // Build the new table
+        for (var i=1; i <= myArray.length; i++) {
+            newRow = document.createElement("tr");
+            tableBody.appendChild(newRow);
+            sno = document.createElement("td");
+            names = document.createElement("td");
+            phone = document.createElement("td");
+            type = document.createElement("td");
+            action = document.createElement("td");
+    
+            sno.textContent = i;
+            names.textContent = myArray[i-1].name;
+            names.classlist = "name";
+            phone.textContent = myArray[i-1].phone;
+            phone.classlist = "phone";
+            type.textContent = myArray[i-1].requested;
+            type.classlist = "type";
+            ata = document.createElement("a");
+            if(myArray[i-1].active){
+
+              ata.textContent= "Verification Pending";
+            }
+            ata.style.cursor = "pointer";
+            ata.style.color = "orange";
+            // ata.style.fontWeight = "600";
+            ata.setAttribute('onclick', 'viewreq()');
+    
+            newRow.appendChild(sno);
+            newRow.appendChild(names);
+            newRow.appendChild(phone);
+            newRow.appendChild(type);
+            newRow.appendChild(action);
+            action.appendChild(ata);
+        }
+    }
+    
+  </script>
+   <script>
+    function knowyourAdmin(params) {
+      if (params) {
+        document.getElementById("logo-type").innerHTML = "Bank";
+      }else{
+
+        document.getElementById("logo-type").innerHTML = "Identity";
+      }
+    }
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
   <script src="./assets/js/fbconfig.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="./assets/js/requested.js"></script>
   
 </body>
 

@@ -36,9 +36,20 @@ The above copyright notice and this permission notice shall be included in all c
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="#" class="simple-text logo-normal">
+      <div class="logo">
+        <a href="./dashboard.html" class="simple-text logo-normal">
           Iden TT
-        </a></div>
+        </a>
+        <a href="./dashboard.html" class="simple-text logo-normal" id="logo-type" style=" font-family: fantasy;
+        background: gainsboro;" >
+          
+        </a>
+        <!-- <a href="./dashboard.html" class="simple-text logo-normal identity-logo"style=" font-family: fantasy;
+        background: gainsboro;" >
+          Identity 
+        </a> -->
+        
+      </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active ">
@@ -453,10 +464,20 @@ The above copyright notice and this permission notice shall be included in all c
       });
     });
   </script>
+  <script>
+    function knowyourAdmin(params) {
+      if (params) {
+        document.getElementById("logo-type").innerHTML = "Bank";
+      }else{
+
+        document.getElementById("logo-type").innerHTML = "Identity";
+      }
+    }
+  </script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="./assets/js/fbconfig.js"></script>
-  <script src="./assets/js/pending-fb.js"></script>
+  <script src="./assets/js/Dashboard.js"></script>
 </body>
 
 </html>
