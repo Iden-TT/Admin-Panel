@@ -475,7 +475,7 @@ The above copyright notice and this permission notice shall be included in all c
           }
         // }
         if (myArray['Pending'] == "False") {
-          document.getElementById('confirm-btn').setAttribute('disabled', 'true');
+          document.getElementById('confirm-btn').style.display = "none";
         }
     }
     
@@ -487,6 +487,7 @@ The above copyright notice and this permission notice shall be included in all c
           document.getElementById("logo-type-text").innerHTML = "Bank";
         }else{
   
+          document.getElementById('personal-data').style.display = "none";  
           document.getElementById("logo-type").src = "./assets/icons/Document.png";
           document.getElementById("logo-type-text").innerHTML = "Document";
         }
@@ -509,9 +510,7 @@ The above copyright notice and this permission notice shall be included in all c
         alert(error);
       });
   }
-  if (document.getElementById("logo-type-text").innerText !== "BANK") {
-    document.getElementById('personal-data').style.display = "none";
-  }
+  
   </script>
   
 </body>
