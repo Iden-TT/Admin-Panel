@@ -14,10 +14,10 @@ The above copyright notice and this permission notice shall be included in all c
 
 <head>
   <meta charset="utf-8" />
-  
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard by Iden TT
+    Admin Panel
   </title>
 
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -30,26 +30,29 @@ The above copyright notice and this permission notice shall be included in all c
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="white" >
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo">
-        <a href="./dashboard.html" class="simple-text logo-normal">
-          Iden TT
-        </a>
-        <a href="./dashboard.html" class="simple-text logo-normal" id="logo-type" style=" font-family: fantasy;
-        background: gainsboro;" >
+    <div class="logo" style="display: flex; flex-direction: column; align-items: center;">
+      <a href="./dashboard.html" class="simple-text logo-normal">
+        <img src="./assets/img/IdenTT_Logo.png" style="max-height: 70px;"> 
+      </a>
+      <br>
+      <a href="./dashboard.html" >
+          <img src="" id="logo-type" style="max-height: 82px;">
+      </a>
+      <a href="./dashboard.html" class="simple-text logo-normal" id="logo-type-text" style=" font-family: fantasy; " >
           
         </a>
-        <!-- <a href="./dashboard.html" class="simple-text logo-normal identity-logo"style=" font-family: fantasy;
-        background: gainsboro;" >
-          Identity 
-        </a> -->
-        
-      </div>
+      <!-- <a href="./dashboard.html" class="simple-text logo-normal identity-logo"style=" font-family: fantasy;
+      background: gainsboro;" >
+        Identity 
+      </a> -->
+      
+    </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active ">
@@ -70,7 +73,8 @@ The above copyright notice and this permission notice shall be included in all c
               <p>Notifications</p>
             </a>
           </li> -->
-        </ul>
+
+
       </div>
     </div>
     <div class="main-panel">
@@ -79,6 +83,9 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <a class="navbar-brand" id="generate">Generate QR</a>
+          </div>
+          <div class="navbar-wrapper">
+            <button  class="btn btn-primary"><img src="./assets/icons/logout.png"></button> 
           </div>
       </nav>
       <!-- End Navbar -->
@@ -466,13 +473,15 @@ The above copyright notice and this permission notice shall be included in all c
   </script>
   <script>
     function knowyourAdmin(params) {
-      if (params) {
-        document.getElementById("logo-type").innerHTML = "Bank";
-      }else{
-
-        document.getElementById("logo-type").innerHTML = "Identity";
+        if (params) {
+          document.getElementById("logo-type").src = "./assets/icons/Bank.png";
+          document.getElementById("logo-type-text").innerHTML = "Bank";
+        }else{
+  
+          document.getElementById("logo-type").src = "./assets/icons/Document.png";
+          document.getElementById("logo-type-text").innerHTML = "Identity";
+        }
       }
-    }
   </script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
